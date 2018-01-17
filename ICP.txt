@@ -1,6 +1,6 @@
 ICP
  - definição de ICP (Interface Segregation Principle)
- 	:: Não força dependência de métodos sem necessidade.
+ 	:: Não forçar dependência de métodos sem necessidade.
  
 ------------------------------------------------- 
  - * O JavaScript não tem Interface nativa
