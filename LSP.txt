@@ -1,0 +1,95 @@
+LSP
+ - definição de LSP (Liskov Substitution Principle)
+    :: A classe pai pode ser subscrita pela classe derivada.
+ 
+------------------------------------------------- 
+ - Forma que viola o LSP
+ -------------------------------------------------
+
+class CameloArabe {
+    
+    constructor() {
+       this._tipoAnimal = 'mamifero';
+       this._corcova;
+    }
+    
+    get tipoCamelo() {
+        return this._tipoAnimal;
+    }
+
+    get caracteristicaEspecifica() {
+        return (this._corcova = 1);
+    }
+}
+
+class Camelo {
+    
+    constructor() {
+        this._camelo = new CameloArabe();
+    }
+
+    cameloAsiatico() {
+        let tipoDoMeuCamelo = this._camelo.tipoCamelo;
+        let caracteristica = this._camelo.caracteristicaEspecifica;
+        let caracteristica =  (caracteristica * 2);
+        
+        console.log('Meu amelo-asiático é um', tipoDoMeuCamelo + ' e tem' + caracteristica + ' corcovas.')
+    }
+
+}
+
+-------------------------------------------------
+- Correção do código LSP
+-------------------------------------------------
+ 
+
+ class Camelo {
+    
+    constructor() {
+       this._tipoAnimal = 'mamifero';
+    }
+    
+    get tipoCamelo() {
+        return this._tipoAnimal;
+    }
+
+}
+
+ class CameloArabe extends Camelo {
+    
+    constructor() {
+        super();
+    }
+    
+    get caracteristicaEspecifica() {
+        return (this._corcova = 1);
+    }
+}
+
+ class CameloAsiatico extends Camelo {
+    
+    constructor() {
+        super();
+    }
+    
+    get caracteristicaEspecifica() {
+        return (this._corcova = 2);
+    }
+}
+
+
+class Animal extends CameloArabe {
+    
+    constructor() {
+        this._camelo = new CameloAsiatico();
+    }
+
+    cameloAsiatico() {
+        let tipoDoMeuCamelo = this._camelo.tipoCamelo;
+        let caracteristica = this._camelo.caracteristicaEspecifica;
+        
+        console.log('Meu amelo-asiático é um', tipoDoMeuCamelo + ' e tem' + caracteristica + ' corcovas.')
+    }
+
+}   
+-------------------------------------------------

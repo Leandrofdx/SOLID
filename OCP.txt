@@ -1,0 +1,41 @@
+OCP
+ - definição de OCP (Open Close Principle)
+ 	:: Disponíveis para serem estendidas, mas indisponíveis para alterações.
+ 
+------------------------------------------------- 
+ - Forma que viola o OCP
+ -------------------------------------------------
+
+	function Acesso(tipoUsuario) {
+
+		this.tipoUsuario = tipoUsuario;
+
+	    if (this.tipoUsuario == "admin") {
+	    	...
+	     } 
+
+	     if (this.tipoUsuario == "user") {
+	    	...
+	     } 
+	}
+
+
+-------------------------------------------------
+- Correção do código OCP
+-------------------------------------------------
+ 
+	function Acesso(tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	Acesso.prototype.admin = function() {
+		/* Terá acesso ao this.tipoUsuario */
+	    ...
+	}
+
+	Acesso.prototype.user = function() {
+		/* Terá acesso ao this.tipoUsuario */
+	    ...
+	}
+	
+-------------------------------------------------

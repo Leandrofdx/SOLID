@@ -1,0 +1,56 @@
+SRP
+ - definição de Single Responsibility Principle
+ 	:: Cada classe deve ter apenas uma responsabilidade.
+ 
+------------------------------------------------- 
+ - Forma que viola o SRP
+ -------------------------------------------------
+
+	class ExibeNome {
+	    
+	    constructor(name) {
+	        this._name = name;
+	    }
+	 
+	    exibirNome() {
+	        return this._name;
+	    }
+
+		/* Este método não deveria estar aqui */
+	    cadastraNome() {
+	    	...
+	     } 
+	}
+
+-------------------------------------------------
+- Correção do código SRP
+-------------------------------------------------
+ 
+
+	class ExibeNome {
+	    
+	    constructor(name) {
+	        this._name = name;
+	    }
+	 
+	    exibirNome() {
+	        return this._name;
+	    }
+	}
+
+
+	/* de preferencia esta class deve ser outro arquivo */
+
+	class CadastraNome {
+	    
+	    constructor() { 
+	    	...
+	    }
+	 
+	    cadastraNome() {
+	        ...
+	    }
+	}
+-------------------------------------------------
+
+
